@@ -16,16 +16,24 @@ public class Runner {
     private static final TeamDAO teamDAO = new TeamDAOImpl();
 
     public static void main(String[] args) {
-
+//        testAddFootballer();
+//        testIncreaseFootballerGoals();
+//        testDeleteFootballer();
+//        testGetFootballersByTeam();
+//        testGetBombardier();
+//        testTradeFootballers();
+//        testAddTeam();
+//        testUpdateTeamRank();
+        testDeleteTeam();
     }
 
-   private static void testAddFootballer() {
+    private static void testAddFootballer() {
         Team team = new Team();
-        team.setId(1);
+        team.setId(2);
         Footballer footballer = new Footballer();
-        footballer.setFirstName("ვინმე");
-        footballer.setLastName("ვინმეშვილი");
-        footballer.setGoals(7);
+        footballer.setFirstName("რამე");
+        footballer.setLastName("რამეძე");
+        footballer.setGoals(10);
         footballer.setTeam(team);
         try {
             footballerDAO.addFootballer(footballer);
@@ -35,9 +43,8 @@ public class Runner {
     }
 
     private static void testIncreaseFootballerGoals() {
-
-            Footballer footballer = new Footballer();
-            footballer.setId(3);
+        Footballer footballer = new Footballer();
+        footballer.setId(4);
         try {
             footballerDAO.increaseFootballerGoals(footballer);
         } catch (LeagueException ex) {
@@ -46,9 +53,9 @@ public class Runner {
 
     }
 
-    private static void testDeleteFootballer(){
-            Footballer footballer = new Footballer();
-            footballer.setId(6);
+    private static void testDeleteFootballer() {
+        Footballer footballer = new Footballer();
+        footballer.setId(5);
         try {
             footballerDAO.deleteFootballer(footballer);
         } catch (LeagueException ex) {
@@ -72,37 +79,30 @@ public class Runner {
 
     private static void testGetBombardier() {
         try {
-            footballerDAO.getBombardier();
+            System.out.println(footballerDAO.getBombardier());
         } catch (LeagueException ex) {
-            System.out.println(ex.getMessageKey() +" ,reason: "+ ex.getMessage());
+            System.out.println(ex.getMessageKey() + " ,reason: " + ex.getMessage());
         }
 
     }
 
     private static void testTradeFootballers() {
         Team team1 = new Team();
-        team1.setId(7);
+        team1.setId(1);
         Team team2 = new Team();
-        team2.setId(10);
+        team2.setId(2);
         Footballer footballer1 = new Footballer();
         Footballer footballer2 = new Footballer();
-        footballer1.setId(32);
+        footballer1.setId(4);
         footballer1.setTeam(team1);
-        footballer2.setId(93);
+        footballer2.setId(7);
         footballer2.setTeam(team2);
         try {
             footballerDAO.tradeFootballers(footballer1, footballer2);
         } catch (LeagueException ex) {
             System.out.println(ex.getMessageKey() + " ,reason " + ex.getMessage());
         }
-
     }
-
-
-
-
-
-
 
 
     private static void testAddTeam() {
@@ -117,31 +117,29 @@ public class Runner {
 
     }
 
-    private static void testUpdateTeamRank(){
-        Team team=new Team();
+    private static void testUpdateTeamRank() {
+        Team team = new Team();
         team.setId(2);
-        int newRank=3;
+        int newRank = 3;
         try {
-            teamDAO.updateTeamRank(team,newRank);
+            teamDAO.updateTeamRank(team, newRank);
         } catch (LeagueException ex) {
             System.out.println(ex.getMessageKey() + " ,reason: " + ex.getMessage());
         }
     }
 
-    private static void testDeleteTeam(){
-        Team team=new Team();
-        team.setId(5);
+    private static void testDeleteTeam() {
+        Team team = new Team();
+        team.setId(2);
         try {
             teamDAO.deleteTeam(team);
         } catch (LeagueException ex) {
             System.out.println(ex.getMessageKey() + " ,reason: " + ex.getMessage());
         }
-
     }
 
-  /*  private static void testGetTeamsByRank(){
-        T
+    private static void testGetTeamsByRank(){
 
-    }?*/
+    }
 }
 

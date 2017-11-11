@@ -36,31 +36,29 @@ public class FootballerDAOImpl implements FootballerDAO {
     public void increaseFootballerGoals(Footballer footballer) throws LeagueException {
         try {
             Connection con = DatabaseConnector.getConnection();
-            PreparedStatement pstmt = con.prepareStatement("UPDATE footballer SET goals = goals+1 WHERE id=?");
+            PreparedStatement pstmt = con.prepareStatement("UPDATE footballer SET goals = goals + 1 WHERE id=?");
             pstmt.setInt(1, footballer.getId());
+            pstmt.executeUpdate();
             pstmt.close();
             con.close();
-            //swori mqonda mara ese uketesia ^.^ iiiiii
         } catch (Exception ex) {
             throw new LeagueException("Can't increase Footballer goals ", ex);
         }
-
     }
 
 
     @Override
     public void deleteFootballer(Footballer footballer) throws LeagueException {
-        Connection con = null;
         try {
-            con = DatabaseConnector.getConnection();
-            PreparedStatement pstmt = con.prepareStatement("DELETE footballer WHERE id=?");
+            Connection con = DatabaseConnector.getConnection();
+            PreparedStatement pstmt = con.prepareStatement("DELETE FROM footballer WHERE id=?");
             pstmt.setInt(1, footballer.getId());
+            pstmt.executeUpdate();
             pstmt.close();
             con.close();
         } catch (Exception ex) {
             throw new LeagueException("Couldn't delete footballer try again later ", ex);
         }
-
     }
 
     @Override
@@ -90,11 +88,11 @@ public class FootballerDAOImpl implements FootballerDAO {
 
     @Override
     public Footballer getBombardier() throws LeagueException {
-
         try {
             Connection con = DatabaseConnector.getConnection();
             PreparedStatement pstms = con.prepareStatement("SELECT * FROM footballer ORDER BY goals DESC LIMIT 1");
             ResultSet rs = pstms.executeQuery();
+            rs.next();
             Footballer footballer = new Footballer();
             footballer.setId(rs.getInt("id"));
             footballer.setFirstName(rs.getString("firstname"));
@@ -103,8 +101,6 @@ public class FootballerDAOImpl implements FootballerDAO {
             pstms.close();
             con.close();
             return footballer;
-//TEAM IDic vecadot rom wamovigot :)
-
         } catch (Exception ex) {
             throw new LeagueException("Couldn't get bombardier :( ", ex);
         }
@@ -113,39 +109,20 @@ public class FootballerDAOImpl implements FootballerDAO {
     @Override
     public void tradeFootballers(Footballer footballer1, Footballer footballer2) throws LeagueException {
         try {
-            /*Connection con = DatabaseConnector.getConnection();
-            PreparedStatement pstms = con.prepareStatement("UPDATE footballer SET id=?, firstname=?, lastname=?, goals=? WHERE id=?");
-            PreparedStatement pstms1 = con.prepareStatement("UPDATE footballer SET id=?, firstname=?, lastname=?, goals= WHERE id=?");
-
-            pstms.setInt(1, footballer1.getId());
-            pstms.setString(2, footballer1.getFirstName());
-            pstms.setString(3, footballer1.getLastName());
-            pstms.setInt(4, footballer1.getGoals());
-            pstms.setInt(5, footballer2.getId());
-
-            pstms1.setInt(1, footballer2.getId());
-            pstms1.setString(2, footballer2.getFirstName());
-            pstms1.setString(3, footballer2.getLastName());
-            pstms1.setInt(4, footballer2.getGoals());
-            pstms1.setInt(5, footballer1.getId());*/
-
             Connection con = DatabaseConnector.getConnection();
-            PreparedStatement pstms = con.prepareStatement("UPDATE TABLE footballer SET fk_team=? WHERE id = ?");
-            PreparedStatement pstms1 = con.prepareStatement("UPDATE TABLE footballer SET fk_team=? WHERE id = ?");
+            PreparedStatement pstms = con.prepareStatement("UPDATE footballer SET fk_team=? WHERE id = ?");
+            PreparedStatement pstms1 = con.prepareStatement("UPDATE footballer SET fk_team=? WHERE id = ?");
             pstms.setInt(1, footballer2.getTeam().getId());
             pstms.setInt(2, footballer1.getId());
             pstms1.setInt(1, footballer1.getTeam().getId());
             pstms1.setInt(2, footballer2.getId());
-
-            //marto TEAMEBI UNDA GAGVECVALA -_-
             pstms.executeUpdate();
             pstms1.executeUpdate();
             pstms.close();
             pstms1.close();
             con.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new LeagueException("Couldn't trade :( ", e);
         }
-
     }
 }
