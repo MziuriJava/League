@@ -1,6 +1,8 @@
-package ge.mziuri.league.model;
+package ge.mziuri.league.model.team;
 
-public class Team {
+import java.io.Serializable;
+
+public class Team implements Serializable {
 
     private int id;
 

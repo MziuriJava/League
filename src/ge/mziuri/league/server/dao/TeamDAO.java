@@ -1,7 +1,7 @@
 package ge.mziuri.league.server.dao;
 
-import ge.mziuri.league.model.SortDirection;
-import ge.mziuri.league.model.Team;
+import ge.mziuri.league.model.team.SortDirection;
+import ge.mziuri.league.model.team.Team;
 import ge.mziuri.league.model.exception.LeagueException;
 
 import java.util.List;

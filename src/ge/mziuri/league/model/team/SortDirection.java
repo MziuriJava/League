@@ -1,4 +1,4 @@
-package ge.mziuri.league.model;
+package ge.mziuri.league.model.team;
 
 public enum SortDirection {
 

@@ -1,11 +1,7 @@
 package ge.mziuri.league.server.dao;
 
-import ge.mziuri.league.server.dao.FootballerDAO;
-import ge.mziuri.league.server.dao.FootballerDAOImpl;
-import ge.mziuri.league.server.dao.TeamDAO;
-import ge.mziuri.league.server.dao.TeamDAOImpl;
-import ge.mziuri.league.model.Footballer;
-import ge.mziuri.league.model.Team;
+import ge.mziuri.league.model.footballer.Footballer;
+import ge.mziuri.league.model.team.Team;
 import ge.mziuri.league.model.exception.LeagueException;
 
 import java.util.List;

@@ -1,6 +1,10 @@
-package ge.mziuri.league.model;
+package ge.mziuri.league.model.footballer;
 
-public class Footballer {
+import ge.mziuri.league.model.team.Team;
+
+import java.io.Serializable;
+
+public class Footballer implements Serializable {
 
     private int id;
 

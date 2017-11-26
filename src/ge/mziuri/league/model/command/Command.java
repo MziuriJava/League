@@ -1,0 +1,15 @@
+package ge.mziuri.league.model.command;
+
+public enum Command {
+
+    ADD_FOOTBALLER,
+    INCREASE_FOOTBALLERS_GOALS,
+    DELETE_FOOTBALLER,
+    GET_FOOTBALLERS_BY_TEAM,
+    GET_BOMBARDIER,
+    TRADE_FOOTBALLERS,
+    ADD_TEAM,
+    UPDATE_TEAM_RANK,
+    DELETE_TEAM,
+    GET_TEAMS_SORTED_BY_RANK
+}
