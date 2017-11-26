@@ -15,18 +15,23 @@ public class FootballerDAOImpl implements FootballerDAO {
 
     @Override
     public void addFootballer(Footballer footballer) throws LeagueException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
         try {
-            Connection con = DatabaseConnector.getConnection();
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO footballer (firstname, lastname, goals, fk_team) VALUES (?,?,?,?)");
+            con = DatabaseConnector.getConnection();
+            pstmt = con.prepareStatement("INSERT INTO footballer (firstname, lastname, goals, fk_team) VALUES (?,?,?,?)");
             pstmt.setString(1, footballer.getFirstName());
             pstmt.setString(2, footballer.getLastName());
             pstmt.setInt(3, footballer.getGoals());
             pstmt.setInt(4, footballer.getTeam().getId());
             pstmt.executeUpdate();
-            pstmt.close();
-            con.close();
         } catch (Exception ex) {
             throw new LeagueException("Can't add footballer", ex);
+        } finally {
+            try {
+                pstmt.close();
+                con.close();
+            } catch (Exception ignored) {}
         }
     }
 
