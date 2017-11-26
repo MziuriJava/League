@@ -1,16 +1,16 @@
-package ge.mziuri.league.client;
+package ge.mziuri.league.server.dao;
 
-import ge.mziuri.league.dao.FootballerDAO;
-import ge.mziuri.league.dao.FootballerDAOImpl;
-import ge.mziuri.league.dao.TeamDAO;
-import ge.mziuri.league.dao.TeamDAOImpl;
+import ge.mziuri.league.server.dao.FootballerDAO;
+import ge.mziuri.league.server.dao.FootballerDAOImpl;
+import ge.mziuri.league.server.dao.TeamDAO;
+import ge.mziuri.league.server.dao.TeamDAOImpl;
 import ge.mziuri.league.model.Footballer;
 import ge.mziuri.league.model.Team;
 import ge.mziuri.league.model.exception.LeagueException;
 
 import java.util.List;
 
-public class Runner {
+public class DAOTest {
 
     private static final FootballerDAO footballerDAO = new FootballerDAOImpl();
     private static final TeamDAO teamDAO = new TeamDAOImpl();

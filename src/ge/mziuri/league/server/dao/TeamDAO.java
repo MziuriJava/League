@@ -1,4 +1,4 @@
-package ge.mziuri.league.dao;
+package ge.mziuri.league.server.dao;
 
 import ge.mziuri.league.model.SortDirection;
 import ge.mziuri.league.model.Team;

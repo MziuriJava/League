@@ -1,15 +1,13 @@
-package ge.mziuri.league.dao;
+package ge.mziuri.league.server.dao;
 
 import ge.mziuri.league.model.Footballer;
 import ge.mziuri.league.model.Team;
 import ge.mziuri.league.model.exception.LeagueException;
-import ge.mziuri.league.util.DatabaseConnector;
+import ge.mziuri.league.server.util.DatabaseConnector;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ge.mziuri.league.util;
+package ge.mziuri.league.server.util;
 
 public class DatabaseUtil {
 
